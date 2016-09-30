@@ -3,11 +3,11 @@
 //third party requires
 const express = require("express");
 const bodyParser = require("body-parser");
-const session = require('express-session')
+const session = require('express-session');
 const RedisStore = require('connect-redis')(session)
 
 const routes = require("./routes/");
-const {connect} = require("./database");
+const { connect } = require("./database");
 
 const app = express();
 
@@ -24,11 +24,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 // middlewares
 app.use(session({
   store: new RedisStore(),
-  secret: 'pizzadescottsupersecretkey'
+  secret: 'hella'
 }))
 
 app.use((req, res, next) => {
-  app.locals.email = req.session.email
+  // app.locals.email = req.session.email
   next()
 })
 
